@@ -1,3 +1,5 @@
+
+let allIssues = [];
 const loadPost = async()=>{
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     const res = await fetch(url);
@@ -9,13 +11,36 @@ const displayData = (info)=>{
     const cardDisplay = document.getElementById("main-card");
     cardDisplay.innerHTML = "";
 
+
+
+    
+  
+
     info.forEach((issue)=>{
+         
+
+    const borderTopcolor = issue.status === "open"
+    ? "border-t-4 border-[#00A96E]"
+    : "border-t-4 border-[#A855F7]";
+
+    // const op=0;
+    // const cl =0;
+    // const totalJobsNumber = data.lenth();
+
+    // if(issue.status === "open"){
+    //     op++;
+    // } 
+    // else if(issue.status === "closed"){
+    //     cl++;
+    // }
         
         const crateCard = document.createElement("div");
+        
          crateCard.innerHTML = `
                 
 
-                <div class="card border-sky-100 py-4 bg-white shadow-lg p-4 mt-2 ml-2 min-w-72 h-full mb-2">
+                <div class="card ${borderTopcolor}  py-4 bg-white shadow-lg p-4  w-full h-full mb-2">
+
                     <div class="flex justify-between px-4">
                         <img class= "w-[20px]" src="./assets/Open-Status.png" alt="">
                         <button class="btn btn-soft btn-secondary" >${issue.priority}</button>

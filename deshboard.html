@@ -48,8 +48,8 @@
     <main class="max-w-7xl mx-auto px-10">
         <div class="bg-white max-h-[200px] my-[30px] py-5 px-4 rounded-lg">
             <button onclick="loadPost()" class="btn btn-primary">All</button>
-            <button class="btn ">Open</button>
-            <button class="btn">Closed</button>
+            <button onclick="showOpen()" class="btn ">Open</button>
+            <button onclick="showClosed()" class="btn">Closed</button>
         </div>
 
         <div class="flex justify-between gap- bg-white mx-h-[200px] py-5 px-4 rounded-lg ">
@@ -59,7 +59,9 @@
                 </div>
 
                 <div>
-                 <h2>50 Issues</h2>
+                <p><span id="total-count" ></span>Issues</p>
+                <p><span id="open-count" ></span>OpenJobs</p>
+                <p><span id="closed-count" ></span>ClosedJobs</p>
                 <p>Track and manage your Projects Issues</p>
                 </div>
                
@@ -67,14 +69,14 @@
             </div>
 
             <div class="flex gap-2 ">
-                <h4><i class="fa-solid fa-circle"></i> Open</h4>
-                <h4><i class="fa-solid fa-circle"></i> Closed</h4>
+                <h4><i class="fa-solid fa-circle text-[#00A96E]"></i> Open</h4>
+                <h4><i class="fa-solid fa-circle text-[#A855F7]"></i> Closed</h4>
             </div>
             
         </div>
 
         <section>
-            <div id="main-card" class="grid grid-cols-4 gap-4 px-4">
+            <div id="main-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#ebebeb] py-4 mt-[10px] pl-4 shadow-lg rounded-lg ">
 
             </div>
         </section>
