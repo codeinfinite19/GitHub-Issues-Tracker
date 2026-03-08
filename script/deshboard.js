@@ -15,7 +15,7 @@ const displayData = (info)=>{
          crateCard.innerHTML = `
                 
 
-                <div class="card border-sky-100 py-4 bg-white shadow-lg p-4 mt-2 ml-2 min-w-72">
+                <div class="card border-sky-100 py-4 bg-white shadow-lg p-4 mt-2 ml-2 min-w-72 h-full mb-2">
                     <div class="flex justify-between px-4">
                         <img class= "w-[20px]" src="./assets/Open-Status.png" alt="">
                         <button class="btn btn-soft btn-secondary" >${issue.priority}</button>
@@ -27,6 +27,8 @@ const displayData = (info)=>{
                     <div class="flex gap-2 py-2">
                         <button class="btn btn-primary">BUG</button>
                         <button class="btn btn-soft btn-secondary">HELP WANTED</Button>
+                        <button class="btn btn-soft btn-secondary">Enhancement</Button>
+
                     </div>
                     <div class="h-[1px] w-[100%] bg-black"></div>
                     <div class="flex flex-col gap-2 py-2">

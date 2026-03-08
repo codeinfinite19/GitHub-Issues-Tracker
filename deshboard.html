@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- Fond Awsome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <title>Document</title>
 </head>
@@ -15,9 +18,9 @@
     <header class="bg-[#ffffff]">
         <nav>
             <div class="flex justify-between px-4 py-4">
-                <div class="flex gap-1 justify-center align-middle">
-                    <img class="w-[50px]" src="./assets/github-logo.png" alt="">
-                    <h1 class="font-bold">GitHub Tracker</h1>
+                <div class="flex gap-2 items-center py-4 ">
+                    <img class="w-[40px] md:w-[50px]" src="./assets/github-logo.png" alt="">
+                    <h1 class="font-bold text-lg md:text-xl  items-center">GitHub Tracker</h1>
                 </div>
                 <div class="flex gap-2">
                         <label class="input">
@@ -36,20 +39,20 @@
                         <input type="search" required placeholder="Search" />
                         </label> 
 
-                        <button class="btn btn-primary">Primary</button>
+                        <button class="btn btn-primary"><i class="fa-regular fa-plus"></i>New Issues</button>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main >
-        <div>
+    <main class="max-w-7xl mx-auto px-10">
+        <div class="bg-white max-h-[200px] my-[30px] py-5 px-4 rounded-lg">
             <button onclick="loadPost()" class="btn btn-primary">All</button>
             <button class="btn ">Open</button>
             <button class="btn">Closed</button>
         </div>
 
-        <div class="flex justify-between gap-2">
+        <div class="flex justify-between gap- bg-white mx-h-[200px] py-5 px-4 rounded-lg ">
             <div class="flex" >
                 <div>
                      <img src="./assets/Aperture.png" alt="">
@@ -63,15 +66,15 @@
                
             </div>
 
-            <div class="flex gap-2">
-                <h4>Open</h4>
-                <h4>Closed</h4>
+            <div class="flex gap-2 ">
+                <h4><i class="fa-solid fa-circle"></i> Open</h4>
+                <h4><i class="fa-solid fa-circle"></i> Closed</h4>
             </div>
             
         </div>
 
         <section>
-            <div id="main-card" class="grid grid-cols-4 gap-2">
+            <div id="main-card" class="grid grid-cols-4 gap-4 px-4">
 
             </div>
         </section>
