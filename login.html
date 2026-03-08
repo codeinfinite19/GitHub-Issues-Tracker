@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- DesyUI  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    
+    <title>GitHub Issues Tracker | Login</title>
+</head>
+<body>
+    <section class="Upper-section">
+        <div class="header-content">
+            <img src="./assets/github-logo.png" alt="Github Logo">
+            <h1>Github Issues Tracker</h1>
+            <p>Sign in to manage your issues</p>
+        </div>
+
+    </section>
+
+    <section class="form-section">
+            <form class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset class="fieldset">
+            <label class="label">User Name</label>
+            <input id="input-userName" type="text" class="input validator" placeholder="Uer Name" required />
+            <p class="validator-hint hidden">Required</p>
+        </fieldset>
+
+        <label class="fieldset">
+            <span class="label">Password</span>
+            <input id="input-password" type="password" class="input validator" placeholder="Password" required />
+            <span class="validator-hint hidden">Required</span>
+        </label>
+
+        <button id="login-btn" class="btn btn-neutral mt-4" type="submit">Login</button>
+        
+        </form>
+
+        <div><h5>Or</h5></div>
+        <p>Demo Creadentials</p>
+        <div>zqaaa
+            <p><span>Username:</span>admin</p>
+            <p><span>Password:</span>admin123</p>
+        </div>
+
+    </section>
+    <script src="./script/login.js" ></script>
+</body>
+</html>
+
