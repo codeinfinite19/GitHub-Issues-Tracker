@@ -28,7 +28,7 @@ const displayData = (info)=>{
     //time formate
     const timeFormate = new Date(issue.createdAt).toLocaleDateString("en-US");
 
-
+    // priority color set
     const priorityStatus = {
         high: "bg-[#FEECEC]",
         medium: "bg-[#FFF6D1]",
@@ -49,56 +49,10 @@ const displayData = (info)=>{
         .join("");
 
 
-        //modal
-        info.forEach((issue)=>{
-
-    const crateCard = document.createElement("div");
-
-    crateCard.innerHTML = `
-    <div onclick="openIssue(${issue.id})"
-    class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cursor-pointer">
-
-        <div class="flex justify-between px-4">
-            <img class="w-[20px]" src="./assets/Open-Status.png">
-            <button class="btn ${priorityStyle}">${issue.priority}</button>
-        </div>
-
-        <h1 class="font-bold mt-2 mb-2 line-clamp-2">${issue.title}</h1>
-
-        <p class="text-[#64748B]">${issue.description}</p>
-
-        <div class="flex gap-2 py-2 flex-wrap">
-            ${labelshtml}
-        </div>
-
-        <div class="h-[1px] w-full bg-black"></div>
-
-        <div class="flex flex-col gap-2 py-2">
-            <p class="text-[#64748B]">#${issue.id} ${issue.author}</p>
-            <p class="text-[#64748B]">${timeFormate}</p>
-        </div>
-
-    </div>
-    `;
-
-    cardDisplay.append(crateCard);
-
-});
-
-      
-
-    // const op=0;
-    // const cl =0;
-    // const totalJobsNumber = data.lenth();
-
-    // if(issue.status === "open"){
-    //     op++;
-    // } 
-    // else if(issue.status === "closed"){
-    //     cl++;
-    // }
+    
+ 
         
-        const crateCard = document.createElement("div");
+const crateCard = document.createElement("div");
 
 crateCard.innerHTML = `
 <div onclick="openIssue(${issue.id})"
@@ -133,7 +87,7 @@ class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cur
 
     
    
-}
+};
 
 
 // Total number jobs : open jobs and closed jobs count
@@ -169,6 +123,10 @@ const showAll = ()=>{
     updateCounts(allIssues);
     setActiveButton("btn-all");
     showCounts("all");
+
+    currentFilter = "all";
+    applyFilters();
+    
 };
 
 const showOpen = () => {
@@ -176,7 +134,10 @@ const showOpen = () => {
     displayData(openIssues);
     updateCounts(openIssues);
     setActiveButton("btn-open");
-     showCounts("open");
+    showCounts("open");
+
+    currentFilter = "open";
+    applyFilters();
 };
 
 const showClosed = ()=>{
@@ -184,7 +145,10 @@ const showClosed = ()=>{
     displayData(closedIssues);
     setActiveButton("btn-closed")
     updateCounts(closedIssues);
-     showCounts("closed");
+    showCounts("closed");
+
+    currentFilter = "closed";
+    applyFilters();
 };
 
 
@@ -221,8 +185,9 @@ const showCounts = (type) =>{
 };
 
 
-//
+// modal funation
 const openIssue = (id) => {
+   
 
   const issue = allIssues.find(item => item.id === id);
 
@@ -241,9 +206,20 @@ const openIssue = (id) => {
   document.getElementById("modal-assignee").innerText =
     issue.assignee || "Unassigned";
 
-  const labels = issue.labels
-    .map(label => `<span class="badge badge-outline">${label}</span>`)
-    .join("");
+  const labelStyles = {
+        bug: "badge badge-outline border-red-400 text-red-500",
+        "help wanted": "badge badge-outline border-yellow-400 text-yellow-600",
+        documentation: "badge badge-outline border-yellow-400 text-yellow-600",
+        enhancement: "badge badge-outline border-green-400 text-green-600"
+        };
+
+        const labels = issue.labels
+        .map(label => `
+            <span class="${labelStyles[label] || "badge"}">
+            ${label.toUpperCase()}
+            </span>
+        `)
+        .join("");
 
   document.getElementById("modal-labels").innerHTML = labels;
 
@@ -251,6 +227,39 @@ const openIssue = (id) => {
 };
 
 
+
+// search bar 
+
+
+const applyFilters = () => {
+    const searchText = document.getElementById("search-input").value.toLowerCase();
+
+    let filtered = allIssues;
+
+    if(currentFilter === "open"){
+        filtered = filtered.filter(issue => issue.status=="open");
+    }
+    if(currentFilter === "closed"){
+        filtered = filtered.filter(issue => issue.status=="closed");
+    }
+
+    if(searchText){
+        filtered = filtered.filter(issue=>
+
+            issue.title.toLowerCase().includes(searchText) ||
+            issue.description.toLowerCase().includes(searchText) ||
+            issue.author.toLowerCase().includes(searchText) ||
+            issue.labels.join(" ").toLowerCase().includes(searchText)
+
+
+        );
+    }
+
+    displayData(filtered);
+
+};
+
+let currentFilter = "all";
 
 
 loadPost();
