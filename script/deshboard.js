@@ -65,7 +65,7 @@ class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cur
 
     <h1 class="font-bold mt-2 mb-2 line-clamp-2">${issue.title}</h1>
 
-    <p class="text-[#64748B]">${issue.description}</p>
+    <p class="text-[#64748B] description">${issue.description}</p>
 
     <div class="flex gap-2 py-2 flex-wrap">
         ${labelshtml}
