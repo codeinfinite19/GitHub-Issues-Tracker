@@ -75,7 +75,7 @@ class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cur
 
     <div class="flex flex-col gap-2 py-2">
         <p class="text-[#64748B]">#${issue.id} ${issue.author}</p>
-        <p class="text-[#64748B]">${issue.createdAt}</p>
+        <p class="text-[#64748B]">${timeFormate}</p>
     </div>
 
 </div>
@@ -119,17 +119,33 @@ const setActiveButton = (id)=>{
 // filter button
 
 const showAll = ()=>{
-    displayData(allIssues);
+
+    showLoading();
+ 
+    setTimeout(() => {
+         displayData(allIssues);
     updateCounts(allIssues);
     setActiveButton("btn-all");
     showCounts("all");
 
     currentFilter = "all";
     applyFilters();
+
+    hideLoading();
+
+        
+    },300);
+
+   
     
 };
 
 const showOpen = () => {
+    
+    showLoading();
+
+    setTimeout( () =>{
+       
     const openIssues = allIssues.filter(issue => issue.status=== "open");
     displayData(openIssues);
     updateCounts(openIssues);
@@ -138,10 +154,21 @@ const showOpen = () => {
 
     currentFilter = "open";
     applyFilters();
+
+    hideLoading();
+
+    },300);
+
+    
 };
 
 const showClosed = ()=>{
-    const closedIssues = allIssues.filter(issue => issue.status==="closed");
+
+     showLoading();
+
+    setTimeout(() =>{
+
+        const closedIssues = allIssues.filter(issue => issue.status==="closed");
     displayData(closedIssues);
     setActiveButton("btn-closed")
     updateCounts(closedIssues);
@@ -149,6 +176,11 @@ const showClosed = ()=>{
 
     currentFilter = "closed";
     applyFilters();
+
+    hideLoading();
+
+    },300);
+    
 };
 
 
@@ -260,6 +292,21 @@ const applyFilters = () => {
 };
 
 let currentFilter = "all";
+
+
+//loading
+
+const showLoading = () => {
+    document.getElementById("loading").classList.remove("hidden");
+    document.getElementById("main-card").classList.add("hidden");
+
+
+};
+
+const hideLoading = () =>{
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("main-card").classList.remove("hidden");
+};  
 
 
 loadPost();

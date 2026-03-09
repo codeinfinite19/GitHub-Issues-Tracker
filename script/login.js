@@ -8,7 +8,7 @@ loginButton.addEventListener("click", function(event){
     const inputpassword = (document.getElementById("input-password")).value;
 
     if(inputUserName === "admin" && inputpassword === "admin123"){
-        alert("okk");
+        alert("Your Login is Succesfull");
        window.location.assign("./deshboard.html");
     }
 

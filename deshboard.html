@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
      <!-- DesyUI  -->
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- Fond Awsome -->
@@ -22,7 +25,7 @@
          }
  </style>
 
-    <title>Document</title>
+    <title>GitHub Issues Traceker | Desboard</title>
 </head>
 <body class="bg-[#ebebeb]">
     <header class="bg-[#ffffff]">
@@ -107,9 +110,9 @@
 
     <div class="flex gap-2 text-sm mt-2">
       <span id="modal-status" class="badge badge-success"></span>
-      <span>>>></span>
+      <span><i class="fa-solid fa-circle text-[#28a2f9]"></i></span>
       <span id="modal-author"></span>
-      <span>>>></span>
+      <span><i class="fa-solid fa-circle text-[#17cbef]"></i></span>
       <span id="modal-date"></span>
     </div>
 
@@ -135,6 +138,20 @@
 
   </div>
 </dialog>
+
+
+<!-- spinning loding -->
+
+<div id="loading" class="hidden flex justify-center py-10">
+    <span class="loading loading-bars loading-xl text-primary" ></span>
+    <span class="loading loading-bars loading-xs"></span>
+    <span class="loading loading-bars loading-sm"></span>
+    <span class="loading loading-bars loading-md"></span>
+    <span class="loading loading-bars loading-lg"></span>
+    <span class="loading loading-bars loading-xl"></span>
+    <p class="text-gray-500">Loading is Issues....</p>
+
+</div>
   
     
     <script src="./script/deshboard.js" ></script>
