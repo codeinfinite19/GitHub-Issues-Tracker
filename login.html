@@ -15,12 +15,12 @@
     <title>GitHub Issues Tracker | Login</title>
 </head>
 <body class="bg-[#F8FAFC] ">
-    <div class="min-h-screen bg-white max-w-md mx-auto">
+    <div class="min-h-screen bg-white max-w-md mx-auto flex flex-col items-center">
          <section class="Upper-section">
-        <div class="header-content">
+        <div class="header-content flex flex-col items-center py-5">
             <img src="./assets/github-logo.png" alt="Github Logo">
-            <h1>Github Issues Tracker</h1>
-            <p>Sign in to manage your issues</p>
+            <h1 class="font-bold text-3xl pt-3">Github Issues Tracker</h1>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
         </div>
 
     </section>
@@ -43,12 +43,16 @@
         
         </form>
 
-        <div><h5>Or</h5></div>
-        <p>Demo Creadentials</p>
-        <div>zqaaa
-            <p><span>Username:</span>admin</p>
-            <p><span>Password:</span>admin123</p>
+        <div class="flex flex-col items-center">
+             <div class=" p-4  "><h5 class="text-white bg-black rounded-[50%] py-1 px-1">OR</h5></div>
+
+        <p class="text-[#64748B]">Demo Creadentials</p>
+        <div class="bg-base-200 border-base-300 rounded-box w-xs border p-4 flex flex-col items-center m-4 mb-2">
+            <p><span class="font-bold">Username: </span>admin</p>
+            <p class=""><span class="font-bold">Password: </span>admin123</p>
         </div>
+        </div>
+        
 
     </section>
     </div>
