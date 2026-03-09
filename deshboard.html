@@ -47,21 +47,23 @@
 
     <main class="max-w-7xl mx-auto px-10">
         <div class="bg-white max-h-[200px] my-[30px] py-5 px-4 rounded-lg">
-            <button onclick="loadPost()" class="btn btn-primary">All</button>
-            <button onclick="showOpen()" class="btn ">Open</button>
-            <button onclick="showClosed()" class="btn">Closed</button>
+            <button  id="btn-all" onclick="showAll()" class="btn btn-primary">All</button>
+            <button  id="btn-open" onclick="showOpen()" class="btn ">Open</button>
+            <button  id="btn-closed" onclick="showClosed()" class="btn">Closed</button>
         </div>
 
         <div class="flex justify-between gap- bg-white mx-h-[200px] py-5 px-4 rounded-lg ">
-            <div class="flex" >
+            <div class="flex justify-between items-center" >
                 <div>
-                     <img src="./assets/Aperture.png" alt="">
+                     <img id="allStatusIcon"  class="w-[20px] md: w-[50px] pr-2 border-gray-100 " src="./assets/Aperture.png" alt="">
+                     <img id="openStatusIcon" class="w-[20px] md: w-[50px] pr-2" src="./assets/Open-Status.png" alt="">
+                     <img id="closedStatusIcon" class="w-[20px] md: w-[50px] pr-2" src="./assets/Closed- Status .png" alt="">
                 </div>
 
                 <div>
-                <p><span id="total-count" ></span>Issues</p>
-                <p><span id="open-count" ></span>OpenJobs</p>
-                <p><span id="closed-count" ></span>ClosedJobs</p>
+                <p id="total-box" class="px-1 font-bold py-1"><span id="total-count" ></span> Issues</p>
+                <p id="open-box" class="px-1 font-bold py-1"><span id="open-count" ></span> Open Issues</p>
+                <p id="closed-box" class="px-1 font-bold py-1"><span id="closed-count" ></span> Closed Issues</p>
                 <p>Track and manage your Projects Issues</p>
                 </div>
                
