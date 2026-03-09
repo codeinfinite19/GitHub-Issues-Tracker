@@ -26,7 +26,8 @@ const displayData = (info)=>{
     : "border-t-4 border-[#A855F7]";
 
     //time formate
-    const timeFormate =
+    const timeFormate = new Date(issue.createdAt).toLocaleDateString("en-US");
+
 
     const priorityStatus = {
         high: "bg-[#FEECEC]",
@@ -74,7 +75,7 @@ const displayData = (info)=>{
 
         <div class="flex flex-col gap-2 py-2">
             <p class="text-[#64748B]">#${issue.id} ${issue.author}</p>
-            <p class="text-[#64748B]">${issue.createdAt}</p>
+            <p class="text-[#64748B]">${timeFormate}</p>
         </div>
 
     </div>
