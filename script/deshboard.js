@@ -25,6 +25,9 @@ const displayData = (info)=>{
     ? "border-t-4 border-[#00A96E]"
     : "border-t-4 border-[#A855F7]";
 
+    //time formate
+    const timeFormate =
+
     const priorityStatus = {
         high: "bg-[#FEECEC]",
         medium: "bg-[#FFF6D1]",
@@ -44,6 +47,45 @@ const displayData = (info)=>{
         .map(label => `<span class="${labelStyles[label] || "badge"}">${label.toUpperCase()}</span>`)
         .join("");
 
+
+        //modal
+        info.forEach((issue)=>{
+
+    const crateCard = document.createElement("div");
+
+    crateCard.innerHTML = `
+    <div onclick="openIssue(${issue.id})"
+    class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cursor-pointer">
+
+        <div class="flex justify-between px-4">
+            <img class="w-[20px]" src="./assets/Open-Status.png">
+            <button class="btn ${priorityStyle}">${issue.priority}</button>
+        </div>
+
+        <h1 class="font-bold mt-2 mb-2 line-clamp-2">${issue.title}</h1>
+
+        <p class="text-[#64748B]">${issue.description}</p>
+
+        <div class="flex gap-2 py-2 flex-wrap">
+            ${labelshtml}
+        </div>
+
+        <div class="h-[1px] w-full bg-black"></div>
+
+        <div class="flex flex-col gap-2 py-2">
+            <p class="text-[#64748B]">#${issue.id} ${issue.author}</p>
+            <p class="text-[#64748B]">${issue.createdAt}</p>
+        </div>
+
+    </div>
+    `;
+
+    cardDisplay.append(crateCard);
+
+});
+
+      
+
     // const op=0;
     // const cl =0;
     // const totalJobsNumber = data.lenth();
@@ -56,34 +98,33 @@ const displayData = (info)=>{
     // }
         
         const crateCard = document.createElement("div");
-        
-         crateCard.innerHTML = `
-                
 
-                <div class="card ${borderTopcolor}  py-4 bg-white shadow-lg p-4  w-full h-full mb-2">
+crateCard.innerHTML = `
+<div onclick="openIssue(${issue.id})"
+class="card ${borderTopcolor} py-4 bg-white shadow-lg p-4 w-full h-full mb-2 cursor-pointer">
 
-                    <div class="flex justify-between px-4">
-                        <img class= "w-[20px]" src="./assets/Open-Status.png" alt="">
-                        <button class="btn ${priorityStyle}" >${issue.priority}</button>
-                    </div>
-                    
-                    <h1 class="font-bold mt-2 mb-2 line-clamp-2"> ${issue.title} </h1>
-                    <p class="text-[#64748B]"> ${issue.description} </p>
+    <div class="flex justify-between px-4">
+        <img class="w-[20px]" src="./assets/Open-Status.png">
+        <button class="btn ${priorityStyle}">${issue.priority}</button>
+    </div>
 
-                    <div class="flex gap-2 py-2">
-                   
-                  ${labelshtml}
+    <h1 class="font-bold mt-2 mb-2 line-clamp-2">${issue.title}</h1>
 
-                    </div>
-                    <div class="h-[1px] w-[100%] bg-black"></div>
-                    <div class="flex flex-col gap-2 py-2">
-                        <p class="text-[#64748B]">#${issue.id} ${issue.author} </p>
-                        <p class="text-[#64748B]"> ${issue.createdAt} </p>
-                    </div>
+    <p class="text-[#64748B]">${issue.description}</p>
 
-                </div>
-    
-    `;
+    <div class="flex gap-2 py-2 flex-wrap">
+        ${labelshtml}
+    </div>
+
+    <div class="h-[1px] w-full bg-black"></div>
+
+    <div class="flex flex-col gap-2 py-2">
+        <p class="text-[#64748B]">#${issue.id} ${issue.author}</p>
+        <p class="text-[#64748B]">${issue.createdAt}</p>
+    </div>
+
+</div>
+`;
 
     cardDisplay.append(crateCard);
 
@@ -176,6 +217,36 @@ const showCounts = (type) =>{
     
     }
 
+};
+
+
+//
+const openIssue = (id) => {
+
+  const issue = allIssues.find(item => item.id === id);
+
+  document.getElementById("modal-title").innerText = issue.title;
+  document.getElementById("modal-description").innerText = issue.description;
+
+  document.getElementById("modal-author").innerText =
+    "Opened by " + issue.author;
+
+  document.getElementById("modal-date").innerText =
+    new Date(issue.createdAt).toLocaleDateString();
+
+  document.getElementById("modal-status").innerText = issue.status;
+  document.getElementById("modal-priority").innerText = issue.priority;
+
+  document.getElementById("modal-assignee").innerText =
+    issue.assignee || "Unassigned";
+
+  const labels = issue.labels
+    .map(label => `<span class="badge badge-outline">${label}</span>`)
+    .join("");
+
+  document.getElementById("modal-labels").innerHTML = labels;
+
+  document.getElementById("issueModal").showModal();
 };
 
 
